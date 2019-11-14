@@ -216,7 +216,7 @@ app.all('/sensors', function(req, res) {
 app.use('', express.static('public', { 'index': false }), serveIndex('public', { 'icons': false }))
 
 var server = http.createServer(app);
-const serverPort = 3002;
+const serverPort = 3001;
 server.listen(serverPort);
 console.log('listening on port', serverPort)
 
