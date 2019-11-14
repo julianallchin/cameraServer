@@ -159,7 +159,7 @@ async function drive(left, right) {
 setTimeout(start, 0);
 setTimeout(safe, 300); //Make 300ms to hear beep, 100ms to not
 
-let senseTimeout = setInterval(getSensors,1000)
+let senseTimeout = setInterval(getSensors, 1000)
 
 
 app.all('/drive', function(req, res) {
@@ -190,8 +190,8 @@ app.all('/sing', function(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     let notes = req.query.song || JSON.parse(req.body).song;
     log(notes)
-    notes = notes.replace(/\s/g, ''); //remove white space
-    if(notes[1]!='[')notes='['+notes+']'; //add outer brackets if user left out
+    notes = notes.replace(/\s/g, ''); //remove space
+    if (notes[1] != '[') notes = '[' + notes + ']'; //add outer brackets if user left out
     var arr = JSON.parse(notes);
     len = arr.length;
     arr.length > 16 ? len = 16 : len = arr.length;
@@ -200,7 +200,7 @@ app.all('/sing', function(req, res) {
     for (let i = 0; i < len; i++) {
         payload.push(arr[i][0]);
         payload.push(arr[i][1]);
-        duration += arr[i][1] * (1/32) * 1000;
+        duration += arr[i][1] * (1 / 32) * 1000;
     }
     port.write(Buffer.from(payload)); //store song
     port.write(Buffer.from([141, 0])); //play song
